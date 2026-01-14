@@ -1,70 +1,269 @@
-# Getting Started with Create React App
+# Travel Quotation PDF Generator API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A FastAPI-based backend service that generates professional PDF quotations from JSON data using Playwright for HTML-to-PDF conversion.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- ✅ Pure backend API (no frontend)
+- ✅ Accepts JSON data via POST request
+- ✅ Generates high-quality PDFs with custom design
+- ✅ Includes all quotation sections: itinerary, meals, inclusions, exclusions, terms & conditions, privacy policy
+- ✅ QR codes for booking links
+- ✅ Professional travel quotation template
 
-### `npm start`
+## API Endpoint
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### POST `/api/generate-pdf`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Generates a PDF quotation from the provided JSON data.
 
-### `npm test`
+**Request:**
+- Method: `POST`
+- URL: `http://localhost:8001/api/generate-pdf`
+- Headers: `Content-Type: application/json`
+- Body: JSON object with quotation data (see structure below)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Response:**
+- Content-Type: `application/pdf`
+- Downloadable PDF file
 
-### `npm run build`
+## JSON Data Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```json
+{
+  "tripTitle": "7-Day Goa Escape",
+  "customerName": "John Doe",
+  "dates": "March 15-22, 2025",
+  "city": "Goa, India",
+  "bookingRef": "TRV2025-GOA-001",
+  "coverImage": "https://example.com/cover-image.jpg",
+  
+  "salesperson": {
+    "name": "Priya Sharma",
+    "phone": "+91 98765 43210",
+    "email": "priya@traveego.com",
+    "photo": "https://example.com/salesperson-photo.jpg"
+  },
+  
+  "summary": {
+    "duration": "7 Days / 6 Nights",
+    "travelers": 2,
+    "rating": 4.8,
+    "highlights": [
+      "Beach hopping in North & South Goa",
+      "Water sports & adventure activities"
+    ]
+  },
+  
+  "pricing": {
+    "subtotal": 82500,
+    "taxes": 14850,
+    "discount": 5000,
+    "total": 92350,
+    "perPerson": 46175,
+    "depositDue": 25000,
+    "currency": "INR"
+  },
+  
+  "days": [
+    {
+      "dayNumber": 1,
+      "date": "March 15, 2025",
+      "location": "North Goa",
+      "meals": {
+        "breakfast": "Included",
+        "lunch": "Self Sponsored",
+        "dinner": "Included"
+      },
+      "hotel": {
+        "name": "Coastal Paradise Resort",
+        "stars": 4,
+        "image": "https://example.com/hotel.jpg",
+        "address": "Calangute Beach Road, North Goa, 403516",
+        "amenities": ["Pool", "Spa", "Beach Access"]
+      },
+      "activities": [
+        {
+          "time": "10:00 AM",
+          "title": "Airport Pickup",
+          "description": "Our representative will greet you",
+          "images": ["https://example.com/activity.jpg"],
+          "meetingPoint": "Goa Airport",
+          "type": "included"
+        }
+      ]
+    }
+  ],
+  
+  "gallery": [
+    { "url": "https://example.com/image.jpg", "caption": "Beach" }
+  ],
+  
+  "costBreakdown": [
+    { "item": "Hotel (6 nights)", "qty": 2, "unitPrice": 25000, "total": 50000 }
+  ],
+  
+  "terms": {
+    "cancellation": "Free cancellation up to 15 days",
+    "payment": "25% deposit required",
+    "insurance": "Travel insurance recommended",
+    "changes": "Date changes subject to availability"
+  },
+  
+  "inclusions": [
+    "Accommodation in 4 & 5-star hotels",
+    "Daily breakfast at all hotels"
+  ],
+  
+  "exclusions": [
+    "International or domestic airfare",
+    "Personal expenses"
+  ],
+  
+  "detailedTerms": "Complete terms and conditions text...",
+  "privacyPolicy": "Complete privacy policy text...",
+  
+  "testimonials": [
+    { "name": "John Smith", "rating": 5, "text": "Amazing trip!" }
+  ]
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage Examples
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Using cURL
 
-### `npm run eject`
+```bash
+curl -X POST http://localhost:8001/api/generate-pdf \
+  -H "Content-Type: application/json" \
+  -d @quotation_data.json \
+  --output quotation.pdf
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Using Python (requests)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```python
+import requests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+with open('quotation_data.json', 'r') as f:
+    data = f.read()
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+response = requests.post(
+    'http://localhost:8001/api/generate-pdf',
+    headers={'Content-Type': 'application/json'},
+    data=data
+)
 
-## Learn More
+with open('quotation.pdf', 'wb') as f:
+    f.write(response.content)
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Using JavaScript (fetch)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```javascript
+const data = {
+  // ... your quotation data
+};
 
-### Code Splitting
+fetch('http://localhost:8001/api/generate-pdf', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+})
+.then(response => response.blob())
+.then(blob => {
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'quotation.pdf';
+  a.click();
+});
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Installation & Setup
 
-### Analyzing the Bundle Size
+### Prerequisites
+- Python 3.11+
+- pip
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Install Dependencies
 
-### Making a Progressive Web App
+```bash
+cd /app/backend
+pip install -r requirements.txt
+playwright install chromium
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Run Server
 
-### Advanced Configuration
+```bash
+cd /app/backend
+python server.py
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The server will start on `http://0.0.0.0:8001`
 
-### Deployment
+## API Documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Once the server is running, visit:
+- API Root: `http://localhost:8001/`
+- Interactive API docs: `http://localhost:8001/docs`
+- Alternative docs: `http://localhost:8001/redoc`
 
-### `npm run build` fails to minify
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Create a `.env` file in the `/app/backend` directory:
+
+```env
+PORT=8001
+HOST=0.0.0.0
+```
+
+## PDF Features
+
+The generated PDF includes:
+
+1. **Cover Page** - Professional cover with trip title, customer name, pricing, and QR code
+2. **Trip Overview** - Summary with highlights, duration, travelers, and pricing breakdown
+3. **Detailed Itinerary** - Day-by-day activities with times, descriptions, and images
+4. **Meals Information** - Breakfast, lunch, dinner status for each day
+5. **Accommodation** - Hotel details with photos, ratings, and amenities
+6. **Inclusions** - What's included in the package
+7. **Exclusions** - What's not included
+8. **Terms & Conditions** - Detailed booking and cancellation policies
+9. **Privacy Policy** - Data protection and privacy information
+10. **Cost Breakdown** - Itemized pricing table
+11. **Testimonials** - Customer reviews
+12. **Contact Section** - Salesperson details and booking QR codes
+
+## Error Handling
+
+The API returns appropriate HTTP status codes:
+- `200 OK` - PDF generated successfully
+- `422 Unprocessable Entity` - Invalid JSON structure
+- `500 Internal Server Error` - PDF generation failed
+
+Error response format:
+```json
+{
+  "detail": "PDF generation failed: <error message>"
+}
+```
+
+## Performance
+
+- Average PDF generation time: 3-5 seconds
+- PDF file size: 3-5 MB (depends on images)
+- Concurrent requests: Supported (async API)
+
+## Tech Stack
+
+- **Framework**: FastAPI
+- **PDF Generation**: Playwright (Chromium)
+- **Templating**: Jinja2
+- **Server**: Uvicorn
+- **Data Validation**: Pydantic
+
+## License
+
+This API is part of the Travel Quotation Generator project.
