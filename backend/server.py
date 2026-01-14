@@ -129,29 +129,45 @@ async def generate_pdf(data: QuotationData):
     Generate PDF from quotation data
     """
     try:
+        print(f"Received request for booking: {data.bookingRef}")
+        
         # Read HTML template
         template_path = os.path.join(os.path.dirname(__file__), 'templates', 'pdf_template.html')
+        print(f"Template path: {template_path}")
+        
         with open(template_path, 'r', encoding='utf-8') as f:
             template_content = f.read()
+        
+        print("Template loaded successfully")
         
         # Render template with data
         template = Template(template_content)
         html_content = template.render(data=data.model_dump())
+        
+        print("Template rendered successfully")
         
         # Create temporary files
         temp_dir = tempfile.mkdtemp()
         html_file = os.path.join(temp_dir, 'quotation.html')
         pdf_file = os.path.join(temp_dir, f'quotation-{data.bookingRef}.pdf')
         
+        print(f"Temp dir: {temp_dir}")
+        
         # Write HTML to file
         with open(html_file, 'w', encoding='utf-8') as f:
             f.write(html_content)
         
+        print(f"HTML file created: {html_file}")
+        
         # Generate PDF using Playwright
+        print("Starting Playwright...")
         with sync_playwright() as p:
-            browser = p.chromium.launch()
+            browser = p.chromium.launch(headless=True)
+            print("Browser launched")
             page = browser.new_page()
-            page.goto(f'file://{html_file}')
+            print(f"Loading HTML: file://{html_file}")
+            page.goto(f'file://{html_file}', wait_until='networkidle')
+            print("Page loaded, generating PDF...")
             page.pdf(
                 path=pdf_file,
                 format='A4',
@@ -159,6 +175,12 @@ async def generate_pdf(data: QuotationData):
                 margin={'top': '0', 'right': '0', 'bottom': '0', 'left': '0'}
             )
             browser.close()
+        
+        print(f"PDF generated: {pdf_file}")
+        
+        # Check if PDF was created
+        if not os.path.exists(pdf_file):
+            raise Exception("PDF file was not created")
         
         # Return PDF file
         response = FileResponse(
@@ -169,10 +191,14 @@ async def generate_pdf(data: QuotationData):
         
         # Clean up temp HTML file immediately
         os.remove(html_file)
+        print("Success! Returning PDF")
         
         return response
         
     except Exception as e:
+        print(f"Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"PDF generation failed: {str(e)}")
 
 if __name__ == "__main__":
