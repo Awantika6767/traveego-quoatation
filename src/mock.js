@@ -168,15 +168,6 @@ export const mockQuotationData = {
     { url: "https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?w=1200&h=800&fit=crop", caption: "Palolem Beach" }
   ],
   
-  costBreakdown: [
-    { item: "Hotel Accommodation (6 nights)", qty: 2, unitPrice: 25000, total: 50000 },
-    { item: "Daily Breakfast & Lunch", qty: 7, unitPrice: 1500, total: 10500 },
-    { item: "Airport Transfers", qty: 2, unitPrice: 1500, total: 3000 },
-    { item: "Water Sports Package", qty: 2, unitPrice: 3500, total: 7000 },
-    { item: "Guided Tours & Entry Fees", qty: 2, unitPrice: 4000, total: 8000 },
-    { item: "Sunset Cruise", qty: 2, unitPrice: 2000, total: 4000 }
-  ],
-  
   terms: {
     cancellation: "Free cancellation up to 15 days before travel. 50% refund if cancelled 7-14 days before. Non-refundable within 7 days.",
     payment: "25% deposit required to confirm booking. Balance due 7 days before departure.",

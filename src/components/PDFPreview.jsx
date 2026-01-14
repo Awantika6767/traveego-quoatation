@@ -81,7 +81,7 @@ const PDFPreview = ({ data, previewRef }) => {
               ))}
             </ul>
 
-            <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-gray-200">
+            <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-gray-200">
               <div className="text-center">
                 <Calendar className="w-6 h-6 text-orange-600 mx-auto mb-2" />
                 <p className="text-sm text-gray-600">Duration</p>
@@ -91,11 +91,6 @@ const PDFPreview = ({ data, previewRef }) => {
                 <Users className="w-6 h-6 text-orange-600 mx-auto mb-2" />
                 <p className="text-sm text-gray-600">Travelers</p>
                 <p className="font-semibold text-gray-800">{data.summary.travelers}</p>
-              </div>
-              <div className="text-center">
-                <Star className="w-6 h-6 text-orange-600 mx-auto mb-2 fill-orange-600" />
-                <p className="text-sm text-gray-600">Rating</p>
-                <p className="font-semibold text-gray-800">{data.summary.rating}/5</p>
               </div>
             </div>
           </div>
@@ -375,80 +370,6 @@ const PDFPreview = ({ data, previewRef }) => {
         </div>
       )}
 
-      {/* Cost Breakdown */}
-      <div className="p-12">
-        <h2 className="text-3xl font-bold mb-8 text-black" style={{ fontFamily: "'Playfair Display', serif" }}>
-          Investment Breakdown
-        </h2>
-
-        <div className="bg-white rounded-lg shadow-md overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-orange-600 text-white">
-              <tr>
-                <th className="text-left p-4">Item</th>
-                <th className="text-center p-4">Quantity</th>
-                <th className="text-right p-4">Unit Price</th>
-                <th className="text-right p-4">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.costBreakdown.map((item, idx) => (
-                <tr key={idx} className="border-b border-gray-200">
-                  <td className="p-4 text-gray-800">{item.item}</td>
-                  <td className="p-4 text-center text-gray-600">{item.qty}</td>
-                  <td className="p-4 text-right text-gray-600">
-                    {data.pricing.currency} {item.unitPrice.toLocaleString()}
-                  </td>
-                  <td className="p-4 text-right font-semibold text-gray-800">
-                    {data.pricing.currency} {item.total.toLocaleString()}
-                  </td>
-                </tr>
-              ))}
-              <tr className="bg-gray-50">
-                <td colSpan="3" className="p-4 text-right font-semibold text-gray-800">Subtotal</td>
-                <td className="p-4 text-right font-semibold text-gray-800">
-                  {data.pricing.currency} {data.pricing.subtotal.toLocaleString()}
-                </td>
-              </tr>
-              <tr className="bg-gray-50">
-                <td colSpan="3" className="p-4 text-right text-gray-700">Taxes & Fees</td>
-                <td className="p-4 text-right text-gray-700">
-                  {data.pricing.currency} {data.pricing.taxes.toLocaleString()}
-                </td>
-              </tr>
-              {data.pricing.discount > 0 && (
-                <tr className="bg-red-50">
-                  <td colSpan="3" className="p-4 text-right font-semibold text-red-600">Discount</td>
-                  <td className="p-4 text-right font-semibold text-red-600">
-                    - {data.pricing.currency} {data.pricing.discount.toLocaleString()}
-                  </td>
-                </tr>
-              )}
-              <tr className="bg-black text-white">
-                <td colSpan="3" className="p-4 text-right text-xl font-bold">Grand Total</td>
-                <td className="p-4 text-right text-xl font-bold">
-                  {data.pricing.currency} {data.pricing.total.toLocaleString()}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-6 p-6 bg-orange-50 border-2 border-orange-600 rounded-lg">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="text-sm text-gray-600 mb-1">Deposit Required to Confirm</p>
-              <p className="text-3xl font-bold text-orange-600">
-                {data.pricing.currency} {data.pricing.depositDue.toLocaleString()}
-              </p>
-            </div>
-            <div className="text-center">
-              <QRCodeSVG value={`https://traveego.com/pay/${data.bookingRef}`} size={100} />
-              <p className="text-xs text-gray-600 mt-2">Scan to Pay</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Testimonials */}
       <div className="p-12 bg-gray-50">
