@@ -3,7 +3,7 @@ from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional, Dict
-from playwright.sync_api import sync_playwright
+from playwright.async_api import async_playwright
 import os
 import json
 from datetime import datetime
