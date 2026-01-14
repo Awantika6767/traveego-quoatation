@@ -41,6 +41,11 @@ export const mockQuotationData = {
       dayNumber: 1,
       date: "March 15, 2025",
       location: "North Goa",
+      meals: {
+        breakfast: "Included",
+        lunch: "Included",
+        dinner: "Included"
+      },
       hotel: {
         name: "Coastal Paradise Resort",
         stars: 4,
