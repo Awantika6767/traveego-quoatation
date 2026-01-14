@@ -161,20 +161,20 @@ async def generate_pdf(data: QuotationData):
         
         # Generate PDF using Playwright
         print("Starting Playwright...")
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
             print("Browser launched")
-            page = browser.new_page()
+            page = await browser.new_page()
             print(f"Loading HTML: file://{html_file}")
-            page.goto(f'file://{html_file}', wait_until='networkidle')
+            await page.goto(f'file://{html_file}', wait_until='networkidle')
             print("Page loaded, generating PDF...")
-            page.pdf(
+            await page.pdf(
                 path=pdf_file,
                 format='A4',
                 print_background=True,
                 margin={'top': '0', 'right': '0', 'bottom': '0', 'left': '0'}
             )
-            browser.close()
+            await browser.close()
         
         print(f"PDF generated: {pdf_file}")
         
