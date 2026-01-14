@@ -126,6 +126,11 @@ export const mockQuotationData = {
       dayNumber: 3,
       date: "March 17, 2025",
       location: "South Goa",
+      meals: {
+        breakfast: "Included",
+        lunch: "Included",
+        dinner: "Self Sponsored"
+      },
       hotel: {
         name: "Serene Beach Villa",
         stars: 5,
