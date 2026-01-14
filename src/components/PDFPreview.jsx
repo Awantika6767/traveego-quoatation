@@ -157,6 +157,32 @@ const PDFPreview = ({ data, previewRef }) => {
                     <span>{day.location}</span>
                   </div>
 
+                  {day.meals && (
+                    <div className="mb-4 pb-4 border-b border-orange-200">
+                      <p className="text-sm font-semibold text-gray-700 mb-2">Meals</p>
+                      <div className="space-y-1 text-sm">
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-600">🍳 Breakfast:</span>
+                          <span className={`font-semibold ${day.meals.breakfast === 'Included' ? 'text-green-600' : 'text-orange-600'}`}>
+                            {day.meals.breakfast}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-600">🍽️ Lunch:</span>
+                          <span className={`font-semibold ${day.meals.lunch === 'Included' ? 'text-green-600' : 'text-orange-600'}`}>
+                            {day.meals.lunch}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-gray-600">🍷 Dinner:</span>
+                          <span className={`font-semibold ${day.meals.dinner === 'Included' ? 'text-green-600' : 'text-orange-600'}`}>
+                            {day.meals.dinner}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {day.hotel && (
                     <div className="mt-4 pt-4 border-t border-orange-200">
                       <p className="text-sm text-gray-600 mb-2">Overnight Stay</p>
