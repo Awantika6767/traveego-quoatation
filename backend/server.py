@@ -1,7 +1,8 @@
+import uuid
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Optional, Dict
 from playwright.async_api import async_playwright
 import os
@@ -64,6 +65,18 @@ class Activity(BaseModel):
     meetingPoint: str
     type: str
 
+class VisaItem(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    visa_type: str  # Tourist, Business, Student, etc.
+    destination_country: str
+    processing_time_days: int  # ETA in days
+    cost_per_person: float
+    number_of_people: int
+    total_cost: float
+    description: Optional[str] = None
+
+
 class Day(BaseModel):
     dayNumber: int
     date: str
@@ -76,24 +89,13 @@ class GalleryItem(BaseModel):
     url: str
     caption: str
 
-class CostBreakdownItem(BaseModel):
-    item: str
-    qty: int
-    unitPrice: float
-    total: float
-
-class Terms(BaseModel):
-    cancellation: str
-    payment: str
-    insurance: str
-    changes: str
 
 class Testimonial(BaseModel):
     name: str
     rating: int
     text: str
 
-class QuotationData(BaseModel):
+class QuoatationPDFData(BaseModel):
     tripTitle: str
     customerName: str
     dates: str
@@ -104,9 +106,6 @@ class QuotationData(BaseModel):
     summary: Summary
     pricing: Pricing
     days: List[Day]
-    gallery: Optional[List[GalleryItem]] = None
-    costBreakdown: List[CostBreakdownItem]
-    terms: Terms
     inclusions: Optional[List[str]] = None
     exclusions: Optional[List[str]] = None
     detailedTerms: Optional[str] = None
@@ -124,7 +123,7 @@ async def root():
     }
 
 @app.post("/api/generate-pdf")
-async def generate_pdf(data: QuotationData):
+async def generate_pdf(data: QuoatationPDFData):
     """
     Generate PDF from quotation data
     """
