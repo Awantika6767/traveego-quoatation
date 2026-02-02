@@ -1,0 +1,183 @@
+{
+  "tripTitle": "Complete Goa Holiday + Flight Package",
+  "customerName": "Kumar Family",
+  "dates": "June 10-17, 2025",
+  "city": "Goa, India",
+  "bookingRef": "TRV2025-HOL-001",
+  "coverImage": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Meera Nair",
+    "phone": "+91 98765 43212",
+    "email": "meera@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "7 Days / 6 Nights",
+    "travelers": 2,
+    "rating": 4.9,
+    "highlights": [
+      "Beach resorts with sea view",
+      "Water sports included",
+      "Round-trip flights",
+      "Guided sightseeing tours",
+      "Portuguese heritage experience"
+    ]
+  },
+  "pricing": {
+    "subtotal": 98000,
+    "taxes": 17640,
+    "discount": 8000,
+    "total": 107640,
+    "perPerson": 53820,
+    "depositDue": 35000,
+    "currency": "INR"
+  },
+  "selected_categories": ["Holiday", "Flight"],
+  "flights": [
+    {
+      "booking_reference": "SG-445-2025",
+      "total_passengers": 2,
+      "journey_type": "Round-trip",
+      "total_cost": 28000,
+      "cost_per_person": 14000,
+      "segments": [
+        {
+          "flight_number": "SG 445",
+          "airline": "SpiceJet",
+          "airline_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/SpiceJet_logo.svg/200px-SpiceJet_logo.svg.png",
+          "departure_airport": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+          "departure_city": "Mumbai",
+          "departure_time": "07:00 AM",
+          "departure_date": "June 10, 2025",
+          "arrival_airport": "Goa International Airport (GOI)",
+          "arrival_city": "Goa",
+          "arrival_time": "08:15 AM",
+          "arrival_date": "June 10, 2025",
+          "duration": "1h 15m",
+          "cabin_class": "Economy",
+          "baggage_checkin": "15 KG",
+          "baggage_cabin": "7 KG"
+        },
+        {
+          "flight_number": "SG 448",
+          "airline": "SpiceJet",
+          "airline_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/SpiceJet_logo.svg/200px-SpiceJet_logo.svg.png",
+          "departure_airport": "Goa International Airport (GOI)",
+          "departure_city": "Goa",
+          "departure_time": "06:30 PM",
+          "departure_date": "June 17, 2025",
+          "arrival_airport": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+          "arrival_city": "Mumbai",
+          "arrival_time": "07:45 PM",
+          "arrival_date": "June 17, 2025",
+          "duration": "1h 15m",
+          "cabin_class": "Economy",
+          "baggage_checkin": "15 KG",
+          "baggage_cabin": "7 KG"
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "dayNumber": 1,
+      "date": "June 10, 2025",
+      "location": "North Goa",
+      "meals": {
+        "breakfast": "In-flight",
+        "lunch": "Included",
+        "dinner": "Included"
+      },
+      "hotel": {
+        "name": "Coastal Paradise Resort",
+        "stars": 4,
+        "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
+        "address": "Calangute Beach Road, North Goa, 403516",
+        "amenities": ["Pool", "Spa", "Beach Access", "Restaurant"]
+      },
+      "activities": [
+        {
+          "time": "07:00 AM",
+          "title": "Flight Departure from Mumbai",
+          "description": "Board SpiceJet SG 445 flight to Goa. Flight duration: 1h 15m.",
+          "meetingPoint": "Mumbai Airport Terminal 2",
+          "type": "included"
+        },
+        {
+          "time": "09:30 AM",
+          "title": "Airport Pickup & Hotel Check-in",
+          "description": "Our representative will greet you at Goa Airport and transfer you to your hotel.",
+          "images": ["https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&h=600&fit=crop"],
+          "meetingPoint": "Goa International Airport, Arrival Hall",
+          "type": "included"
+        },
+        {
+          "time": "2:00 PM",
+          "title": "Welcome Lunch at Beach Shack",
+          "description": "Enjoy authentic Goan seafood at a popular beach shack with ocean views.",
+          "images": ["https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=600&fit=crop"],
+          "meetingPoint": "Calangute Beach",
+          "type": "included"
+        },
+        {
+          "time": "5:00 PM",
+          "title": "Sunset at Baga Beach",
+          "description": "Relax and watch the beautiful Goan sunset at the famous Baga Beach.",
+          "images": ["https://images.unsplash.com/photo-1561413213-d7b57e5f5c4c?w=600&h=600&fit=crop"],
+          "meetingPoint": "Baga Beach",
+          "type": "included"
+        }
+      ]
+    },
+    {
+      "dayNumber": 2,
+      "date": "June 11, 2025",
+      "location": "North Goa",
+      "meals": {
+        "breakfast": "Included",
+        "lunch": "Self Sponsored",
+        "dinner": "Included"
+      },
+      "hotel": {
+        "name": "Coastal Paradise Resort",
+        "stars": 4,
+        "image": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop",
+        "address": "Calangute Beach Road, North Goa, 403516"
+      },
+      "activities": [
+        {
+          "time": "9:00 AM",
+          "title": "Water Sports Adventure",
+          "description": "Experience thrilling water sports including parasailing, jet skiing, and banana boat rides.",
+          "images": ["https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=600&fit=crop"],
+          "meetingPoint": "Calangute Beach Water Sports Center",
+          "type": "included"
+        },
+        {
+          "time": "3:00 PM",
+          "title": "Fort Aguada Tour",
+          "description": "Visit the historic Portuguese fort with stunning views of the Arabian Sea.",
+          "images": ["https://images.unsplash.com/photo-1587922546307-776227941871?w=600&h=600&fit=crop"],
+          "meetingPoint": "Hotel Lobby",
+          "type": "included"
+        }
+      ]
+    }
+  ],
+  "inclusions": [
+    "Round-trip economy flights Mumbai-Goa-Mumbai",
+    "6 nights accommodation in 4-star beach resort",
+    "Daily breakfast and 5 dinners",
+    "Airport transfers",
+    "Water sports activities",
+    "All sightseeing as per itinerary",
+    "Professional tour guide"
+  ],
+  "exclusions": [
+    "Lunches (except on arrival day)",
+    "Personal expenses",
+    "Tips and gratuities",
+    "Travel insurance",
+    "Any items not mentioned in inclusions"
+  ]
+}

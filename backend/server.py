@@ -95,7 +95,162 @@ class Testimonial(BaseModel):
     rating: int
     text: str
 
+# New Category Models
+
+class FlightSegment(BaseModel):
+    flight_number: str
+    airline: str
+    airline_logo: str  # URL to airline logo
+    departure_airport: str
+    departure_city: str
+    departure_time: str
+    departure_date: str
+    arrival_airport: str
+    arrival_city: str
+    arrival_time: str
+    arrival_date: str
+    duration: str
+    cabin_class: str  # Economy, Business, First
+    baggage_checkin: str  # e.g., "15 KG"
+    baggage_cabin: str  # e.g., "7 KG"
+
+class FlightDetails(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    booking_reference: str
+    total_passengers: int
+    journey_type: str  # One-way, Round-trip, Multi-city
+    segments: List[FlightSegment]
+    total_cost: float
+    cost_per_person: float
+    notes: Optional[str] = None
+
+class TrainSegment(BaseModel):
+    train_number: str
+    train_name: str
+    departure_station: str
+    departure_city: str
+    departure_time: str
+    departure_date: str
+    arrival_station: str
+    arrival_city: str
+    arrival_time: str
+    arrival_date: str
+    duration: str
+    class_type: str  # AC 1, AC 2, AC 3, Sleeper, etc.
+    seat_numbers: Optional[str] = None
+
+class TrainDetails(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    pnr: str
+    total_passengers: int
+    segments: List[TrainSegment]
+    total_cost: float
+    cost_per_person: float
+    notes: Optional[str] = None
+
+class BusSegment(BaseModel):
+    bus_operator: str
+    bus_type: str  # AC Sleeper, AC Seater, Non-AC, Volvo, etc.
+    departure_location: str
+    departure_time: str
+    departure_date: str
+    arrival_location: str
+    arrival_time: str
+    arrival_date: str
+    duration: str
+    seat_numbers: Optional[str] = None
+
+class BusDetails(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    booking_reference: str
+    total_passengers: int
+    segments: List[BusSegment]
+    total_cost: float
+    cost_per_person: float
+    notes: Optional[str] = None
+
+class TransportWithinCity(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    vehicle_type: str  # Cab, Mini Bus, Traveller
+    vehicle_name: Optional[str] = None  # e.g., Toyota Innova, Tempo Traveller
+    capacity: int
+    pickup_location: str
+    drop_location: Optional[str] = None
+    pickup_date: str
+    pickup_time: str
+    duration: str  # e.g., "4 hours", "Full day", "Airport transfer"
+    total_cost: float
+    cost_per_vehicle: float
+    number_of_vehicles: int
+    driver_details: Optional[str] = None
+    notes: Optional[str] = None
+
+class MICEEvent(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    event_type: str  # Meeting, Incentive, Conference, Exhibition
+    event_name: str
+    venue_name: str
+    venue_address: str
+    venue_image: Optional[str] = None
+    capacity: int
+    number_of_attendees: int
+    event_date: str
+    event_time: str
+    duration: str  # e.g., "3 hours", "Full day"
+    equipment_provided: Optional[List[str]] = None  # Projector, Sound System, etc.
+    catering_included: bool
+    catering_details: Optional[str] = None
+    total_cost: float
+    cost_per_person: float
+    notes: Optional[str] = None
+
+class StandaloneHotel(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    stars: int
+    image: str
+    address: str
+    city: str
+    check_in_date: str
+    check_out_date: str
+    number_of_nights: int
+    room_type: str  # Deluxe, Suite, Standard, etc.
+    number_of_rooms: int
+    guests_per_room: int
+    meal_plan: str  # EP, CP, MAP, AP
+    amenities: Optional[List[str]] = None
+    total_cost: float
+    cost_per_room_per_night: float
+    notes: Optional[str] = None
+
+class SightseeingPlace(BaseModel):
+    name: str
+    description: str
+    image: Optional[str] = None
+    duration: str
+    entry_fee_included: bool
+
+class SightseeingPackage(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    package_name: str
+    city: str
+    date: str
+    start_time: str
+    end_time: str
+    duration: str
+    places: List[SightseeingPlace]
+    transport_included: bool
+    transport_details: Optional[str] = None
+    guide_included: bool
+    meal_included: bool
+    meal_details: Optional[str] = None
+    total_cost: float
+    cost_per_person: float
+    number_of_people: int
+    notes: Optional[str] = None
+
 class QuoatationPDFData(BaseModel):
+    # Basic Info (Always Required)
     tripTitle: str
     customerName: str
     dates: str
@@ -105,7 +260,22 @@ class QuoatationPDFData(BaseModel):
     salesperson: Salesperson
     summary: Summary
     pricing: Pricing
-    days: List[Day]
+    
+    # Selected Categories (Always Required)
+    selected_categories: List[str]  # ["Holiday", "Visa", "Flight", etc.]
+    
+    # Category-specific data (Optional based on selected_categories)
+    days: Optional[List[Day]] = None  # For Holiday packages
+    visas: Optional[List[VisaItem]] = None  # For Visa services
+    flights: Optional[List[FlightDetails]] = None  # For Flight bookings
+    trains: Optional[List[TrainDetails]] = None  # For Train bookings
+    buses: Optional[List[BusDetails]] = None  # For Bus bookings
+    transports_within_city: Optional[List[TransportWithinCity]] = None  # For local transport
+    mice_events: Optional[List[MICEEvent]] = None  # For MICE events
+    standalone_hotels: Optional[List[StandaloneHotel]] = None  # For hotel-only bookings
+    sightseeing_packages: Optional[List[SightseeingPackage]] = None  # For sightseeing
+    
+    # Common Optional Fields
     inclusions: Optional[List[str]] = None
     exclusions: Optional[List[str]] = None
     detailedTerms: Optional[str] = None

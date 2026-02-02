@@ -1,0 +1,95 @@
+{
+  "tripTitle": "Mumbai to Dubai Flight",
+  "customerName": "Rajesh Kumar",
+  "dates": "April 10-15, 2025",
+  "city": "Dubai, UAE",
+  "bookingRef": "TRV2025-FLT-001",
+  "coverImage": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Priya Sharma",
+    "phone": "+91 98765 43210",
+    "email": "priya@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "5 Days",
+    "travelers": 2,
+    "rating": 4.9,
+    "highlights": [
+      "Direct flight with premium airline",
+      "Generous baggage allowance",
+      "Comfortable seating",
+      "In-flight entertainment"
+    ]
+  },
+  "pricing": {
+    "subtotal": 45000,
+    "taxes": 8100,
+    "discount": 2000,
+    "total": 51100,
+    "perPerson": 25550,
+    "depositDue": 15000,
+    "currency": "INR"
+  },
+  "selected_categories": ["Flight"],
+  "flights": [
+    {
+      "booking_reference": "AI892-2025",
+      "total_passengers": 2,
+      "journey_type": "Round-trip",
+      "total_cost": 51100,
+      "cost_per_person": 25550,
+      "segments": [
+        {
+          "flight_number": "AI 892",
+          "airline": "Air India",
+          "airline_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Air_India_Logo.svg/200px-Air_India_Logo.svg.png",
+          "departure_airport": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+          "departure_city": "Mumbai",
+          "departure_time": "09:30 AM",
+          "departure_date": "April 10, 2025",
+          "arrival_airport": "Dubai International Airport (DXB)",
+          "arrival_city": "Dubai",
+          "arrival_time": "11:45 AM",
+          "arrival_date": "April 10, 2025",
+          "duration": "3h 15m",
+          "cabin_class": "Economy",
+          "baggage_checkin": "30 KG",
+          "baggage_cabin": "7 KG"
+        },
+        {
+          "flight_number": "AI 893",
+          "airline": "Air India",
+          "airline_logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Air_India_Logo.svg/200px-Air_India_Logo.svg.png",
+          "departure_airport": "Dubai International Airport (DXB)",
+          "departure_city": "Dubai",
+          "departure_time": "02:30 PM",
+          "departure_date": "April 15, 2025",
+          "arrival_airport": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+          "arrival_city": "Mumbai",
+          "arrival_time": "07:45 PM",
+          "arrival_date": "April 15, 2025",
+          "duration": "3h 15m",
+          "cabin_class": "Economy",
+          "baggage_checkin": "30 KG",
+          "baggage_cabin": "7 KG"
+        }
+      ],
+      "notes": "Please arrive at the airport 3 hours before departure for international flights. Web check-in opens 48 hours before departure."
+    }
+  ],
+  "inclusions": [
+    "Round-trip economy class tickets",
+    "30 KG check-in baggage per person",
+    "7 KG cabin baggage per person",
+    "In-flight meals and beverages",
+    "In-flight entertainment"
+  ],
+  "exclusions": [
+    "Airport transfers",
+    "Travel insurance",
+    "Visa fees",
+    "Extra baggage charges",
+    "Seat selection charges"
+  ]
+}

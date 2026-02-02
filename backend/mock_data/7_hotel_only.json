@@ -1,0 +1,83 @@
+{
+  "tripTitle": "Jaipur Heritage Hotel Stay",
+  "customerName": "Verma Family",
+  "dates": "September 20-25, 2025",
+  "city": "Jaipur, Rajasthan",
+  "bookingRef": "TRV2025-HTL-001",
+  "coverImage": "https://images.unsplash.com/photo-1596436889106-be35e843f974?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Kavita Reddy",
+    "phone": "+91 98765 43215",
+    "email": "kavita@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "5 Nights",
+    "travelers": 4,
+    "rating": 4.9,
+    "highlights": [
+      "Luxury heritage hotel",
+      "Royal Rajasthani experience",
+      "Breakfast included",
+      "Palace architecture",
+      "Swimming pool and spa"
+    ]
+  },
+  "pricing": {
+    "subtotal": 45000,
+    "taxes": 8100,
+    "discount": 3000,
+    "total": 50100,
+    "perPerson": 12525,
+    "depositDue": 15000,
+    "currency": "INR"
+  },
+  "selected_categories": ["Hotel"],
+  "standalone_hotels": [
+    {
+      "name": "The Royal Heritage Palace",
+      "stars": 5,
+      "image": "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
+      "address": "Amer Road, Near Jal Mahal",
+      "city": "Jaipur",
+      "check_in_date": "September 20, 2025",
+      "check_out_date": "September 25, 2025",
+      "number_of_nights": 5,
+      "room_type": "Deluxe Suite",
+      "number_of_rooms": 2,
+      "guests_per_room": 2,
+      "meal_plan": "CP (Continental Plan - Breakfast)",
+      "amenities": [
+        "Swimming Pool",
+        "Spa & Wellness Center",
+        "24/7 Room Service",
+        "Free WiFi",
+        "Airport Shuttle",
+        "Restaurant & Bar",
+        "Fitness Center",
+        "Heritage Architecture"
+      ],
+      "total_cost": 50100,
+      "cost_per_room_per_night": 5010,
+      "notes": "Early check-in subject to availability. Late checkout available on request (additional charges may apply). Traditional Rajasthani welcome on arrival."
+    }
+  ],
+  "inclusions": [
+    "5 nights accommodation in Deluxe Suites",
+    "Daily buffet breakfast for 4 people",
+    "Welcome drink on arrival",
+    "Access to swimming pool and fitness center",
+    "Free WiFi throughout stay",
+    "Complimentary parking",
+    "All applicable taxes"
+  ],
+  "exclusions": [
+    "Lunch and dinner",
+    "Spa and wellness treatments",
+    "Alcoholic beverages",
+    "Airport transfers",
+    "Sightseeing tours",
+    "Minibar charges",
+    "Laundry services"
+  ]
+}

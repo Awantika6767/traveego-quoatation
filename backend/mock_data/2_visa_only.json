@@ -1,0 +1,61 @@
+{
+  "tripTitle": "Dubai Tourist Visa",
+  "customerName": "Anita Desai",
+  "dates": "Processing: March 20-27, 2025",
+  "city": "Dubai, UAE",
+  "bookingRef": "TRV2025-VSA-001",
+  "coverImage": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Vikram Singh",
+    "phone": "+91 98765 43211",
+    "email": "vikram@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "7 Days Processing",
+    "travelers": 4,
+    "rating": 4.8,
+    "highlights": [
+      "Fast processing within 7 days",
+      "30-day tourist visa",
+      "Multiple entry allowed",
+      "Complete documentation support"
+    ]
+  },
+  "pricing": {
+    "subtotal": 28000,
+    "taxes": 2800,
+    "discount": 1000,
+    "total": 29800,
+    "perPerson": 7450,
+    "depositDue": 29800,
+    "currency": "INR"
+  },
+  "selected_categories": ["Visa"],
+  "visas": [
+    {
+      "name": "Dubai 30-Day Tourist Visa",
+      "visa_type": "Tourist",
+      "destination_country": "United Arab Emirates",
+      "processing_time_days": 7,
+      "cost_per_person": 7450,
+      "number_of_people": 4,
+      "total_cost": 29800,
+      "description": "Single entry 30-day tourist visa for UAE. Valid for 60 days from date of issue. Must be used within validity period. Includes visa stamping and documentation charges."
+    }
+  ],
+  "inclusions": [
+    "Visa processing fees",
+    "Documentation support",
+    "Application submission",
+    "Visa stamping charges",
+    "Status tracking"
+  ],
+  "exclusions": [
+    "Flight tickets",
+    "Hotel accommodation",
+    "Travel insurance",
+    "Courier charges (if applicable)",
+    "Passport application/renewal fees"
+  ]
+}

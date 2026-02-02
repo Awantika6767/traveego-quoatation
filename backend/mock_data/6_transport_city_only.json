@@ -1,0 +1,68 @@
+{
+  "tripTitle": "Mumbai Airport Transfer",
+  "customerName": "Patel Family",
+  "dates": "August 5, 2025",
+  "city": "Mumbai, India",
+  "bookingRef": "TRV2025-CAB-001",
+  "coverImage": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Suresh Kumar",
+    "phone": "+91 98765 43214",
+    "email": "suresh@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "Airport Transfer",
+    "travelers": 6,
+    "rating": 4.8,
+    "highlights": [
+      "Comfortable SUV vehicle",
+      "Professional driver",
+      "On-time pickup guaranteed",
+      "Flight tracking included"
+    ]
+  },
+  "pricing": {
+    "subtotal": 2800,
+    "taxes": 252,
+    "discount": 0,
+    "total": 3052,
+    "perPerson": 509,
+    "depositDue": 3052,
+    "currency": "INR"
+  },
+  "selected_categories": ["Transport within city"],
+  "transports_within_city": [
+    {
+      "vehicle_type": "Mini Bus",
+      "vehicle_name": "Toyota Hiace / Tempo Traveller",
+      "capacity": 12,
+      "pickup_location": "Chhatrapati Shivaji Maharaj International Airport, Terminal 2",
+      "drop_location": "Andheri West, Mumbai",
+      "pickup_date": "August 5, 2025",
+      "pickup_time": "11:30 PM",
+      "duration": "Airport Transfer (1 hour)",
+      "total_cost": 3052,
+      "cost_per_vehicle": 3052,
+      "number_of_vehicles": 1,
+      "driver_details": "Experienced driver with 10+ years. English and Hindi speaking.",
+      "notes": "Driver will track flight arrival time. Complimentary 30 minutes waiting time included. Water bottles provided."
+    }
+  ],
+  "inclusions": [
+    "Airport pickup from Terminal 2",
+    "Comfortable 12-seater vehicle",
+    "Professional driver",
+    "Flight tracking service",
+    "30 minutes complimentary waiting",
+    "Toll charges included",
+    "Fuel charges included",
+    "Bottled water"
+  ],
+  "exclusions": [
+    "Parking charges (if applicable)",
+    "Additional waiting beyond 30 minutes (₹100 per 15 min)",
+    "Luggage porter charges",
+    "Driver tips (optional)"
+  ]
+}

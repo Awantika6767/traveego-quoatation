@@ -1,0 +1,75 @@
+{
+  "tripTitle": "Mumbai to Goa Train Journey",
+  "customerName": "Desai Family",
+  "dates": "December 15, 2025",
+  "city": "Mumbai to Goa",
+  "bookingRef": "TRV2025-TRN-001",
+  "coverImage": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Amit Patel",
+    "phone": "+91 98765 43217",
+    "email": "amit@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "11 Hours Journey",
+    "travelers": 4,
+    "rating": 4.7,
+    "highlights": [
+      "Comfortable AC sleeper berths",
+      "Scenic coastal route",
+      "Onboard meals available",
+      "Confirmed tickets"
+    ]
+  },
+  "pricing": {
+    "subtotal": 4200,
+    "taxes": 378,
+    "discount": 200,
+    "total": 4378,
+    "perPerson": 1095,
+    "depositDue": 4378,
+    "currency": "INR"
+  },
+  "selected_categories": ["Train"],
+  "trains": [
+    {
+      "pnr": "2301234567",
+      "total_passengers": 4,
+      "total_cost": 4378,
+      "cost_per_person": 1095,
+      "segments": [
+        {
+          "train_number": "10103",
+          "train_name": "Mandovi Express",
+          "departure_station": "Mumbai Central (MMCT)",
+          "departure_city": "Mumbai",
+          "departure_time": "07:10 AM",
+          "departure_date": "December 15, 2025",
+          "arrival_station": "Madgaon Junction (MAO)",
+          "arrival_city": "Goa",
+          "arrival_time": "06:15 PM",
+          "arrival_date": "December 15, 2025",
+          "duration": "11h 05m",
+          "class_type": "AC 3 Tier",
+          "seat_numbers": "B1-25, B1-26, B1-27, B1-28 (Lower & Middle Berths)"
+        }
+      ],
+      "notes": "Please carry valid ID proof for verification. Boarding starts 30 minutes before departure. Food and beverages available in pantry car."
+    }
+  ],
+  "inclusions": [
+    "Confirmed train tickets for 4 passengers",
+    "AC 3 Tier berths",
+    "Bedding and pillows provided",
+    "Access to pantry car",
+    "All booking charges included"
+  ],
+  "exclusions": [
+    "Meals and beverages (available for purchase)",
+    "Porter charges at stations",
+    "Travel insurance",
+    "Station parking charges",
+    "Any personal expenses"
+  ]
+}

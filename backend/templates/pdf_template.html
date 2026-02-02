@@ -239,6 +239,518 @@
         </div>
         {% endif %}
 
+        <!-- Flight Details Section -->
+        {% if data.flights and data.flights|length > 0 %}
+        <div style="padding: 48px; background: #eff6ff;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">Flight Details</h2>
+            
+            {% for flight in data.flights %}
+            <div style="background: white; border: 2px solid #2563eb; border-radius: 12px; padding: 32px; margin-bottom: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 2px solid #e5e7eb;">
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 8px;">{{ flight.journey_type }}</h3>
+                        <span style="display: inline-block; background: #dbeafe; color: #1e40af; padding: 6px 16px; border-radius: 9999px; font-size: 14px; font-weight: 600;">
+                            Booking Ref: {{ flight.booking_reference }}
+                        </span>
+                        <p style="margin-top: 8px; color: #6b7280;">Passengers: {{ flight.total_passengers }}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                        <p style="font-size: 32px; font-weight: bold; color: #2563eb;">{{ data.pricing.currency }} {{ "{:,}".format(flight.total_cost|int) }}</p>
+                        <p style="font-size: 14px; color: #6b7280;">{{ data.pricing.currency }} {{ "{:,}".format(flight.cost_per_person|int) }} per person</p>
+                    </div>
+                </div>
+                
+                {% for segment in flight.segments %}
+                <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 16px;">
+                    <!-- Airline Header -->
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #cbd5e1;">
+                        <img src="{{ segment.airline_logo }}" alt="{{ segment.airline }}" style="height: 40px; width: auto; object-fit: contain;">
+                        <div>
+                            <p style="font-size: 18px; font-weight: bold; color: #1f2937;">{{ segment.airline }}</p>
+                            <p style="font-size: 14px; color: #64748b;">{{ segment.flight_number }} • {{ segment.cabin_class }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Flight Route -->
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center; margin-bottom: 20px;">
+                        <!-- Departure -->
+                        <div style="text-align: left;">
+                            <p style="font-size: 32px; font-weight: bold; color: #1f2937; margin-bottom: 4px;">{{ segment.departure_time }}</p>
+                            <p style="font-size: 16px; color: #64748b; margin-bottom: 4px;">{{ segment.departure_date }}</p>
+                            <p style="font-size: 18px; font-weight: 600; color: #1f2937;">{{ segment.departure_city }}</p>
+                            <p style="font-size: 14px; color: #64748b;">{{ segment.departure_airport }}</p>
+                        </div>
+                        
+                        <!-- Duration -->
+                        <div style="text-align: center; position: relative;">
+                            <div style="width: 120px; height: 2px; background: #cbd5e1; position: relative;">
+                                <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: white; padding: 4px 12px;">
+                                    <span style="font-size: 12px; color: #64748b;">✈️</span>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px; color: #64748b; margin-top: 8px;">{{ segment.duration }}</p>
+                        </div>
+                        
+                        <!-- Arrival -->
+                        <div style="text-align: right;">
+                            <p style="font-size: 32px; font-weight: bold; color: #1f2937; margin-bottom: 4px;">{{ segment.arrival_time }}</p>
+                            <p style="font-size: 16px; color: #64748b; margin-bottom: 4px;">{{ segment.arrival_date }}</p>
+                            <p style="font-size: 18px; font-weight: 600; color: #1f2937;">{{ segment.arrival_city }}</p>
+                            <p style="font-size: 14px; color: #64748b;">{{ segment.arrival_airport }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Baggage Info -->
+                    <div style="display: flex; gap: 16px; padding: 16px; background: white; border-radius: 8px;">
+                        <div style="flex: 1; text-align: center; padding: 12px; background: #f1f5f9; border-radius: 6px;">
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Check-in Baggage</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">🧳 {{ segment.baggage_checkin }}</p>
+                        </div>
+                        <div style="flex: 1; text-align: center; padding: 12px; background: #f1f5f9; border-radius: 6px;">
+                            <p style="font-size: 12px; color: #64748b; margin-bottom: 4px;">Cabin Baggage</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">🎒 {{ segment.baggage_cabin }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% if flight.notes %}
+                <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <p style="font-size: 14px; color: #92400e; line-height: 1.6;"><strong>Note:</strong> {{ flight.notes }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Train Details Section -->
+        {% if data.trains and data.trains|length > 0 %}
+        <div style="padding: 48px; background: #f0fdf4;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">Train Journey Details</h2>
+            
+            {% for train in data.trains %}
+            <div style="background: white; border: 2px solid #16a34a; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 2px solid #e5e7eb;">
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 8px;">Train Booking</h3>
+                        <span style="display: inline-block; background: #dcfce7; color: #166534; padding: 6px 16px; border-radius: 9999px; font-size: 14px; font-weight: 600;">
+                            PNR: {{ train.pnr }}
+                        </span>
+                        <p style="margin-top: 8px; color: #6b7280;">Passengers: {{ train.total_passengers }}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                        <p style="font-size: 32px; font-weight: bold; color: #16a34a;">{{ data.pricing.currency }} {{ "{:,}".format(train.total_cost|int) }}</p>
+                        <p style="font-size: 14px; color: #6b7280;">{{ data.pricing.currency }} {{ "{:,}".format(train.cost_per_person|int) }} per person</p>
+                    </div>
+                </div>
+                
+                {% for segment in train.segments %}
+                <div style="background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 12px; padding: 24px; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div style="background: #16a34a; color: white; padding: 12px 16px; border-radius: 8px;">
+                            <p style="font-size: 18px; font-weight: bold;">🚂</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 18px; font-weight: bold; color: #1f2937;">{{ segment.train_name }}</p>
+                            <p style="font-size: 14px; color: #64748b;">{{ segment.train_number }} • {{ segment.class_type }}</p>
+                            {% if segment.seat_numbers %}
+                            <p style="font-size: 12px; color: #16a34a; margin-top: 4px;">Seats: {{ segment.seat_numbers }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center;">
+                        <div style="text-align: left;">
+                            <p style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 4px;">{{ segment.departure_time }}</p>
+                            <p style="font-size: 14px; color: #64748b; margin-bottom: 4px;">{{ segment.departure_date }}</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">{{ segment.departure_city }}</p>
+                            <p style="font-size: 13px; color: #64748b;">{{ segment.departure_station }}</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p style="font-size: 12px; color: #64748b;">{{ segment.duration }}</p>
+                            <p style="margin-top: 4px;">→</p>
+                        </div>
+                        
+                        <div style="text-align: right;">
+                            <p style="font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 4px;">{{ segment.arrival_time }}</p>
+                            <p style="font-size: 14px; color: #64748b; margin-bottom: 4px;">{{ segment.arrival_date }}</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">{{ segment.arrival_city }}</p>
+                            <p style="font-size: 13px; color: #64748b;">{{ segment.arrival_station }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% if train.notes %}
+                <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <p style="font-size: 14px; color: #92400e; line-height: 1.6;"><strong>Note:</strong> {{ train.notes }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Bus Details Section -->
+        {% if data.buses and data.buses|length > 0 %}
+        <div style="padding: 48px; background: #fef3c7;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">Bus Journey Details</h2>
+            
+            {% for bus in data.buses %}
+            <div style="background: white; border: 2px solid #f59e0b; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
+                    <div>
+                        <span style="display: inline-block; background: #fef3c7; color: #92400e; padding: 6px 16px; border-radius: 9999px; font-size: 14px; font-weight: 600;">
+                            Booking Ref: {{ bus.booking_reference }}
+                        </span>
+                        <p style="margin-top: 8px; color: #6b7280;">Passengers: {{ bus.total_passengers }}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                        <p style="font-size: 32px; font-weight: bold; color: #f59e0b;">{{ data.pricing.currency }} {{ "{:,}".format(bus.total_cost|int) }}</p>
+                    </div>
+                </div>
+                
+                {% for segment in bus.segments %}
+                <div style="background: #fffbeb; border: 2px solid #fde68a; border-radius: 12px; padding: 24px; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div>
+                            <p style="font-size: 18px; font-weight: bold; color: #1f2937;">🚌 {{ segment.bus_operator }}</p>
+                            <p style="font-size: 14px; color: #64748b;">{{ segment.bus_type }}</p>
+                            {% if segment.seat_numbers %}
+                            <p style="font-size: 12px; color: #f59e0b; margin-top: 4px;">Seats: {{ segment.seat_numbers }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center;">
+                        <div style="text-align: left;">
+                            <p style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 4px;">{{ segment.departure_time }}</p>
+                            <p style="font-size: 14px; color: #64748b; margin-bottom: 4px;">{{ segment.departure_date }}</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">{{ segment.departure_location }}</p>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <p style="font-size: 12px; color: #64748b;">{{ segment.duration }}</p>
+                        </div>
+                        
+                        <div style="text-align: right;">
+                            <p style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 4px;">{{ segment.arrival_time }}</p>
+                            <p style="font-size: 14px; color: #64748b; margin-bottom: 4px;">{{ segment.arrival_date }}</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">{{ segment.arrival_location }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                {% if bus.notes %}
+                <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <p style="font-size: 14px; color: #92400e;"><strong>Note:</strong> {{ bus.notes }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Transport Within City Section -->
+        {% if data.transports_within_city and data.transports_within_city|length > 0 %}
+        <div style="padding: 48px; background: #f5f3ff;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">Local Transport</h2>
+            
+            {% for transport in data.transports_within_city %}
+            <div style="background: white; border: 2px solid #8b5cf6; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 16px;">🚗 {{ transport.vehicle_type }}</h3>
+                        {% if transport.vehicle_name %}
+                        <p style="font-size: 16px; color: #6b7280; margin-bottom: 8px;">{{ transport.vehicle_name }}</p>
+                        {% endif %}
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 16px;">Capacity: {{ transport.capacity }} passengers</p>
+                        
+                        <div style="background: #faf5ff; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+                            <div style="margin-bottom: 12px;">
+                                <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Pickup</p>
+                                <p style="font-size: 14px; font-weight: 600; color: #1f2937;">📍 {{ transport.pickup_location }}</p>
+                                <p style="font-size: 13px; color: #8b5cf6;">{{ transport.pickup_date }} at {{ transport.pickup_time }}</p>
+                            </div>
+                            {% if transport.drop_location %}
+                            <div>
+                                <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Drop</p>
+                                <p style="font-size: 14px; font-weight: 600; color: #1f2937;">📍 {{ transport.drop_location }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <p style="font-size: 14px; color: #6b7280;">Duration: {{ transport.duration }}</p>
+                        {% if transport.driver_details %}
+                        <p style="font-size: 13px; color: #6b7280; margin-top: 8px;">Driver: {{ transport.driver_details }}</p>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <div style="background: #faf5ff; border-radius: 8px; padding: 24px;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">Number of Vehicles</p>
+                            <p style="font-size: 24px; font-weight: bold; color: #8b5cf6; margin-bottom: 16px;">{{ transport.number_of_vehicles }}</p>
+                            
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">Cost Per Vehicle</p>
+                            <p style="font-size: 20px; font-weight: bold; color: #1f2937; margin-bottom: 16px;">{{ data.pricing.currency }} {{ "{:,}".format(transport.cost_per_vehicle|int) }}</p>
+                            
+                            <div style="padding-top: 16px; border-top: 2px solid #e9d5ff;">
+                                <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                                <p style="font-size: 28px; font-weight: bold; color: #8b5cf6;">{{ data.pricing.currency }} {{ "{:,}".format(transport.total_cost|int) }}</p>
+                            </div>
+                        </div>
+                        
+                        {% if transport.notes %}
+                        <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                            <p style="font-size: 13px; color: #92400e;">{{ transport.notes }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- MICE Events Section -->
+        {% if data.mice_events and data.mice_events|length > 0 %}
+        <div style="padding: 48px; background: #fef2f2;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">MICE Events</h2>
+            
+            {% for event in data.mice_events %}
+            <div style="background: white; border: 2px solid #dc2626; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
+                    <div>
+                        <span style="display: inline-block; background: #fee2e2; color: #991b1b; padding: 6px 16px; border-radius: 9999px; font-size: 14px; font-weight: 600; margin-bottom: 12px;">
+                            {{ event.event_type }}
+                        </span>
+                        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 8px;">{{ event.event_name }}</h3>
+                        <p style="color: #6b7280;">{{ event.number_of_attendees }} attendees</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                        <p style="font-size: 32px; font-weight: bold; color: #dc2626;">{{ data.pricing.currency }} {{ "{:,}".format(event.total_cost|int) }}</p>
+                        <p style="font-size: 14px; color: #6b7280;">{{ data.pricing.currency }} {{ "{:,}".format(event.cost_per_person|int) }} per person</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                    {% if event.venue_image %}
+                    <div>
+                        <img src="{{ event.venue_image }}" alt="{{ event.venue_name }}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    {% endif %}
+                    
+                    <div>
+                        <div style="margin-bottom: 16px;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Venue</p>
+                            <p style="font-size: 18px; font-weight: 600; color: #1f2937;">{{ event.venue_name }}</p>
+                            <p style="font-size: 14px; color: #6b7280; margin-top: 4px;">📍 {{ event.venue_address }}</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Date & Time</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">{{ event.event_date }}</p>
+                            <p style="font-size: 14px; color: #6b7280;">{{ event.event_time }} ({{ event.duration }})</p>
+                        </div>
+                        
+                        <div>
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Capacity</p>
+                            <p style="font-size: 16px; font-weight: 600; color: #1f2937;">{{ event.capacity }} people</p>
+                        </div>
+                    </div>
+                </div>
+                
+                {% if event.equipment_provided and event.equipment_provided|length > 0 %}
+                <div style="margin-bottom: 16px;">
+                    <p style="font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px;">Equipment Provided</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        {% for equipment in event.equipment_provided %}
+                        <span style="background: #fee2e2; color: #991b1b; padding: 6px 12px; border-radius: 9999px; font-size: 13px;">{{ equipment }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if event.catering_included %}
+                <div style="background: #fef2f2; padding: 16px; border-radius: 8px;">
+                    <p style="font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 4px;">🍽️ Catering Included</p>
+                    {% if event.catering_details %}
+                    <p style="font-size: 14px; color: #6b7280;">{{ event.catering_details }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                {% if event.notes %}
+                <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <p style="font-size: 14px; color: #92400e;">{{ event.notes }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Standalone Hotels Section -->
+        {% if data.standalone_hotels and data.standalone_hotels|length > 0 %}
+        <div style="padding: 48px; background: #ecfeff;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">Hotel Accommodation</h2>
+            
+            {% for hotel in data.standalone_hotels %}
+            <div style="background: white; border: 2px solid #06b6d4; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                    <div>
+                        <img src="{{ hotel.image }}" alt="{{ hotel.name }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;">
+                        
+                        {% if hotel.amenities and hotel.amenities|length > 0 %}
+                        <div>
+                            <p style="font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px;">Amenities</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                {% for amenity in hotel.amenities %}
+                                <span style="background: #cffafe; color: #0e7490; padding: 6px 12px; border-radius: 9999px; font-size: 13px;">{{ amenity }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 8px;">{{ hotel.name }}</h3>
+                        <div style="margin-bottom: 12px;">
+                            {% for i in range(hotel.stars) %}⭐{% endfor %}
+                        </div>
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 16px;">📍 {{ hotel.address }}, {{ hotel.city }}</p>
+                        
+                        <div style="background: #ecfeff; padding: 20px; border-radius: 8px; margin-bottom: 16px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px;">
+                                <div>
+                                    <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Check-in</p>
+                                    <p style="font-size: 15px; font-weight: 600; color: #1f2937;">{{ hotel.check_in_date }}</p>
+                                </div>
+                                <div>
+                                    <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Check-out</p>
+                                    <p style="font-size: 15px; font-weight: 600; color: #1f2937;">{{ hotel.check_out_date }}</p>
+                                </div>
+                            </div>
+                            <p style="font-size: 14px; color: #06b6d4; font-weight: 600;">{{ hotel.number_of_nights }} Nights</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                            <div style="background: #f0f9ff; padding: 12px; border-radius: 6px;">
+                                <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Room Type</p>
+                                <p style="font-size: 14px; font-weight: 600; color: #1f2937;">{{ hotel.room_type }}</p>
+                            </div>
+                            <div style="background: #f0f9ff; padding: 12px; border-radius: 6px;">
+                                <p style="font-size: 12px; color: #6b7280; margin-bottom: 4px;">Meal Plan</p>
+                                <p style="font-size: 14px; font-weight: 600; color: #1f2937;">{{ hotel.meal_plan }}</p>
+                            </div>
+                        </div>
+                        
+                        <div style="background: #f0f9ff; padding: 16px; border-radius: 8px;">
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">{{ hotel.number_of_rooms }} Rooms × {{ hotel.guests_per_room }} Guests</p>
+                            <p style="font-size: 13px; color: #6b7280; margin-bottom: 8px;">{{ data.pricing.currency }} {{ "{:,}".format(hotel.cost_per_room_per_night|int) }} per room/night</p>
+                            <div style="padding-top: 12px; border-top: 1px solid #bae6fd;">
+                                <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                                <p style="font-size: 24px; font-weight: bold; color: #06b6d4;">{{ data.pricing.currency }} {{ "{:,}".format(hotel.total_cost|int) }}</p>
+                            </div>
+                        </div>
+                        
+                        {% if hotel.notes %}
+                        <div style="margin-top: 16px; padding: 12px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                            <p style="font-size: 13px; color: #92400e;">{{ hotel.notes }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Sightseeing Packages Section -->
+        {% if data.sightseeing_packages and data.sightseeing_packages|length > 0 %}
+        <div style="padding: 48px; background: #fdf4ff;">
+            <h2 class="playfair" style="font-size: 30px; font-weight: bold; margin-bottom: 32px; color: black;">Sightseeing Tours</h2>
+            
+            {% for package in data.sightseeing_packages %}
+            <div style="background: white; border: 2px solid #c026d3; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 24px;">
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 8px;">{{ package.package_name }}</h3>
+                        <p style="font-size: 16px; color: #6b7280; margin-bottom: 8px;">📍 {{ package.city }}</p>
+                        <p style="font-size: 14px; color: #6b7280;">{{ package.date }} • {{ package.start_time }} - {{ package.end_time }}</p>
+                        <p style="font-size: 14px; color: #c026d3; font-weight: 600; margin-top: 4px;">Duration: {{ package.duration }}</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 14px; color: #6b7280; margin-bottom: 4px;">Total Cost</p>
+                        <p style="font-size: 32px; font-weight: bold; color: #c026d3;">{{ data.pricing.currency }} {{ "{:,}".format(package.total_cost|int) }}</p>
+                        <p style="font-size: 14px; color: #6b7280;">{{ data.pricing.currency }} {{ "{:,}".format(package.cost_per_person|int) }} per person</p>
+                        <p style="font-size: 13px; color: #6b7280; margin-top: 4px;">{{ package.number_of_people }} people</p>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 24px;">
+                    <h4 style="font-size: 18px; font-weight: 600; color: #374151; margin-bottom: 16px;">Places to Visit</h4>
+                    {% for place in package.places %}
+                    <div style="background: #fdf4ff; border: 1px solid #f0abfc; border-radius: 8px; padding: 20px; margin-bottom: 12px;">
+                        <div style="display: grid; grid-template-columns: {% if place.image %}120px 1fr{% else %}1fr{% endif %}; gap: 16px;">
+                            {% if place.image %}
+                            <img src="{{ place.image }}" alt="{{ place.name }}" style="width: 120px; height: 120px; object-fit: cover; border-radius: 6px;">
+                            {% endif %}
+                            <div>
+                                <h5 style="font-size: 16px; font-weight: 600; color: #1f2937; margin-bottom: 8px;">{{ place.name }}</h5>
+                                <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">{{ place.description }}</p>
+                                <div style="display: flex; gap: 16px; font-size: 13px;">
+                                    <span style="color: #6b7280;">⏱️ {{ place.duration }}</span>
+                                    <span style="color: {% if place.entry_fee_included %}#16a34a{% else %}#dc2626{% endif %};">
+                                        {% if place.entry_fee_included %}✓ Entry Fee Included{% else %}✗ Entry Fee Not Included{% endif %}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div style="background: #fdf4ff; padding: 16px; border-radius: 8px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; text-align: center;">
+                        <div>
+                            <p style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">Transport</p>
+                            <p style="font-size: 15px; font-weight: 600; color: #1f2937;">{% if package.transport_included %}✓ Included{% else %}✗ Not Included{% endif %}</p>
+                            {% if package.transport_details %}
+                            <p style="font-size: 12px; color: #6b7280; margin-top: 2px;">{{ package.transport_details }}</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <p style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">Guide</p>
+                            <p style="font-size: 15px; font-weight: 600; color: #1f2937;">{% if package.guide_included %}✓ Included{% else %}✗ Not Included{% endif %}</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 13px; color: #6b7280; margin-bottom: 4px;">Meals</p>
+                            <p style="font-size: 15px; font-weight: 600; color: #1f2937;">{% if package.meal_included %}✓ Included{% else %}✗ Not Included{% endif %}</p>
+                            {% if package.meal_details %}
+                            <p style="font-size: 12px; color: #6b7280; margin-top: 2px;">{{ package.meal_details }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                {% if package.notes %}
+                <div style="margin-top: 16px; padding: 16px; background: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px;">
+                    <p style="font-size: 14px; color: #92400e;">{{ package.notes }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <!-- Visa Services Section (if visa items exist) -->
         {% if data.visas and data.visas|length > 0 %}
         <div style="padding: 48px; background: #eff6ff;">

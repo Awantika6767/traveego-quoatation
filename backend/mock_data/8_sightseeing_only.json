@@ -1,0 +1,121 @@
+{
+  "tripTitle": "Delhi Sightseeing Day Tour",
+  "customerName": "Singh Family",
+  "dates": "October 10, 2025",
+  "city": "New Delhi, India",
+  "bookingRef": "TRV2025-SGT-001",
+  "coverImage": "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Rohit Sharma",
+    "phone": "+91 98765 43216",
+    "email": "rohit@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "Full Day (10 hours)",
+    "travelers": 4,
+    "rating": 4.8,
+    "highlights": [
+      "Visit 7 iconic Delhi monuments",
+      "Professional tour guide",
+      "Air-conditioned transport",
+      "Lunch included",
+      "Skip-the-line tickets"
+    ]
+  },
+  "pricing": {
+    "subtotal": 8800,
+    "taxes": 1584,
+    "discount": 500,
+    "total": 9884,
+    "perPerson": 2471,
+    "depositDue": 3000,
+    "currency": "INR"
+  },
+  "selected_categories": ["Sightseeing"],
+  "sightseeing_packages": [
+    {
+      "package_name": "Complete Delhi Heritage Tour",
+      "city": "New Delhi",
+      "date": "October 10, 2025",
+      "start_time": "08:00 AM",
+      "end_time": "06:00 PM",
+      "duration": "10 hours",
+      "places": [
+        {
+          "name": "Red Fort (Lal Qila)",
+          "description": "UNESCO World Heritage site and iconic Mughal architecture masterpiece. Explore the grand halls and beautiful gardens.",
+          "image": "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=600&fit=crop",
+          "duration": "1.5 hours",
+          "entry_fee_included": true
+        },
+        {
+          "name": "Jama Masjid",
+          "description": "India's largest mosque built by Shah Jahan. Marvel at the stunning architecture and panoramic city views from the minaret.",
+          "image": "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&h=600&fit=crop",
+          "duration": "1 hour",
+          "entry_fee_included": true
+        },
+        {
+          "name": "Raj Ghat (Gandhi Memorial)",
+          "description": "Memorial dedicated to Mahatma Gandhi. A peaceful spot for reflection amidst beautiful gardens.",
+          "image": "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=600&fit=crop",
+          "duration": "30 minutes",
+          "entry_fee_included": true
+        },
+        {
+          "name": "India Gate",
+          "description": "War memorial dedicated to Indian soldiers. Perfect for photos with the iconic monument.",
+          "image": "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=600&fit=crop",
+          "duration": "45 minutes",
+          "entry_fee_included": true
+        },
+        {
+          "name": "Rashtrapati Bhavan (President's House)",
+          "description": "Official residence of the President of India. Photo stop to admire the grand colonial architecture.",
+          "duration": "30 minutes",
+          "entry_fee_included": true
+        },
+        {
+          "name": "Qutub Minar",
+          "description": "UNESCO World Heritage site. World's tallest brick minaret showcasing Indo-Islamic architecture.",
+          "image": "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&h=600&fit=crop",
+          "duration": "1.5 hours",
+          "entry_fee_included": true
+        },
+        {
+          "name": "Humayun's Tomb",
+          "description": "Magnificent Mughal tomb and UNESCO World Heritage site. Inspiration for the Taj Mahal's design.",
+          "image": "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=600&fit=crop",
+          "duration": "1.5 hours",
+          "entry_fee_included": true
+        }
+      ],
+      "transport_included": true,
+      "transport_details": "Air-conditioned sedan (Toyota Etios / Similar) with experienced driver",
+      "guide_included": true,
+      "meal_included": true,
+      "meal_details": "Lunch at a popular local restaurant (Vegetarian and Non-vegetarian options)",
+      "total_cost": 9884,
+      "cost_per_person": 2471,
+      "number_of_people": 4,
+      "notes": "Comfortable walking shoes recommended. Friday is closed for Jama Masjid. Camera charges at monuments are extra if you want to carry professional cameras."
+    }
+  ],
+  "inclusions": [
+    "Professional English-speaking tour guide",
+    "Air-conditioned private transport",
+    "Entry fees to all monuments",
+    "Lunch at local restaurant",
+    "Bottled water throughout the tour",
+    "Parking and toll charges",
+    "All taxes"
+  ],
+  "exclusions": [
+    "Hotel pickup/drop (can be arranged at extra cost)",
+    "Personal expenses",
+    "Tips and gratuities",
+    "Professional camera charges at monuments",
+    "Any items not mentioned in inclusions"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "tripTitle": "Corporate Conference Package",
+  "customerName": "TechCorp Solutions",
+  "dates": "July 15, 2025",
+  "city": "Bangalore, India",
+  "bookingRef": "TRV2025-MICE-001",
+  "coverImage": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&h=900&fit=crop",
+  "salesperson": {
+    "name": "Arjun Mehta",
+    "phone": "+91 98765 43213",
+    "email": "arjun@traveego.com",
+    "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop"
+  },
+  "summary": {
+    "duration": "Full Day Event",
+    "travelers": 150,
+    "rating": 4.9,
+    "highlights": [
+      "Premium conference venue",
+      "State-of-the-art AV equipment",
+      "Gourmet catering included",
+      "Professional event management",
+      "High-speed WiFi"
+    ]
+  },
+  "pricing": {
+    "subtotal": 425000,
+    "taxes": 76500,
+    "discount": 25000,
+    "total": 476500,
+    "perPerson": 3177,
+    "depositDue": 150000,
+    "currency": "INR"
+  },
+  "selected_categories": ["MICE"],
+  "mice_events": [
+    {
+      "event_type": "Conference",
+      "event_name": "TechCorp Annual Technology Summit 2025",
+      "venue_name": "The Grand Conference Center",
+      "venue_address": "MG Road, Bangalore, Karnataka 560001",
+      "venue_image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
+      "capacity": 200,
+      "number_of_attendees": 150,
+      "event_date": "July 15, 2025",
+      "event_time": "09:00 AM - 06:00 PM",
+      "duration": "Full Day (9 hours)",
+      "equipment_provided": [
+        "Projector & Screen",
+        "Sound System",
+        "Wireless Microphones (5)",
+        "Stage Setup",
+        "Podium",
+        "High-speed WiFi",
+        "Video Conferencing Setup",
+        "LED Display Panels"
+      ],
+      "catering_included": true,
+      "catering_details": "Welcome tea/coffee with snacks, Gourmet lunch buffet, Evening hi-tea with refreshments. Vegetarian and non-vegetarian options available.",
+      "total_cost": 476500,
+      "cost_per_person": 3177,
+      "notes": "Dedicated event coordinator will be assigned. Setup starts from 7 AM. Parking available for 100 cars."
+    }
+  ],
+  "inclusions": [
+    "Full day venue rental (9 hours)",
+    "Theater-style seating for 150 people",
+    "Complete AV equipment package",
+    "High-speed WiFi connectivity",
+    "Full day catering (breakfast, lunch, hi-tea)",
+    "Professional event coordination",
+    "Registration desk setup",
+    "Parking facilities",
+    "Security personnel"
+  ],
+  "exclusions": [
+    "Travel arrangements for attendees",
+    "Accommodation",
+    "Branding and promotional materials",
+    "Photography/videography services",
+    "Entertainment or guest speakers",
+    "Additional technical support beyond included equipment"
+  ]
+}
